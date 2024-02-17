@@ -1,4 +1,12 @@
-import { Notes } from "../models/notes.schema.js"
+import { Notes } from "../models/notes.schema.js";
+
+const responseModifier=(status,message,data)=>{
+    return ({
+        status,
+        message,
+        data
+    })
+}
 
 const fetchAllNodes=(req,res)=>{
     Notes.find({}).then((data)=>{
@@ -27,4 +35,13 @@ const updateNote=(req,res)=>{
     .catch();
 }
 
-export { fetchAllNodes, createNote, updateNote}
+const deleteNote=(req,res)=>{
+    const id = req.params.id;
+    Notes.findByIdAndDelete(id,req.body)
+    .then(()=>{
+        res.send("note deleted");
+    })
+    .catch();
+};
+
+export { fetchAllNodes, createNote, updateNote, deleteNote}
