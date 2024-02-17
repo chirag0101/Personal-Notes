@@ -10,7 +10,7 @@ const responseModifier=(status,message,data)=>{
 
 const fetchAllNodes=(req,res)=>{
     Notes.find({}).then((data)=>{
-        res.send(data);
+        res.send(responseModifier(true,"message fetched successfully!",data));
     }).catch();
 }
 
@@ -21,7 +21,7 @@ const createNote=(req,res)=>{
     newNote
     .save()
     .then(()=>{
-        res.send("note created");
+        res.send(responseModifier(true,"message created successfully!",null));
     })
     .catch();
 }
@@ -30,7 +30,7 @@ const updateNote=(req,res)=>{
     const  id = req.params.id; 
     Notes.findByIdAndUpdate(id,req.body)
     .then(()=>{
-        res.send("note updated");
+        res.send(responseModifier(true,"message updated successfully!",null));
     })
     .catch();
 }
@@ -39,7 +39,7 @@ const deleteNote=(req,res)=>{
     const id = req.params.id;
     Notes.findByIdAndDelete(id,req.body)
     .then(()=>{
-        res.send("note deleted");
+        res.send(responseModifier(true,"message deleted successfully!",null));
     })
     .catch();
 };
