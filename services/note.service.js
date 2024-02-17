@@ -8,13 +8,18 @@ const fetchAllNodes=(req,res)=>{
 
 // fetchAllNodes();
 
-const createNode=(title,description)=>{
-    const newNote=new Notes({title,description});
-    newNote.save()
+const createNote=(req,res)=>{
+    const newNote=new Notes(res.body);
+    newNote
+    .save()
     .then(()=>{
-        console.log("Note Created");
+        res.send("note created");
     })
     .catch();
 }
 
-export { fetchAllNodes, createNode}
+const updateNote=(req,res)=>{
+
+}
+
+export { fetchAllNodes, createNote}

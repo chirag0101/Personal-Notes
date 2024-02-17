@@ -1,5 +1,5 @@
 import express from "express";
-import { fetchAllNodes } from "../services/note.service.js";
+import { fetchAllNodes,createNote } from "../services/note.service.js";
 
 const router=express.Router();
 
@@ -7,9 +7,7 @@ const router=express.Router();
 router.get('/',fetchAllNodes);
 
 //create new note & saving it to the database
-router.post('/create',(req,res)=>{
-    res.send("Note Created");
-})
+router.post('/create',createNote);
 
 //update notes & saving it to the database
 router.put('/update',(req,res)=>{
