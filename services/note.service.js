@@ -19,7 +19,12 @@ const createNote=(req,res)=>{
 }
 
 const updateNote=(req,res)=>{
-
+    const  id = req.params.id; 
+    Notes.findByIdAndUpdate(id,req.body)
+    .then(()=>{
+        res.send("note updated");
+    })
+    .catch();
 }
 
-export { fetchAllNodes, createNote}
+export { fetchAllNodes, createNote, updateNote}

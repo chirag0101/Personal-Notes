@@ -1,5 +1,5 @@
 import express from "express";
-import { fetchAllNodes,createNote } from "../services/note.service.js";
+import { fetchAllNodes,createNote, updateNote } from "../services/note.service.js";
 
 const router=express.Router();
 
@@ -10,9 +10,7 @@ router.get('/',fetchAllNodes);
 router.post('/create',createNote);
 
 //update notes & saving it to the database
-router.put('/update',(req,res)=>{
-    res.send("Note Updated");
-})
+router.put('/update:id',updateNote)
 
 //deleting note & saving  it to the database
 router.delete('/delete',(req,res)=>{
