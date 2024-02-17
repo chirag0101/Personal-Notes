@@ -1,11 +1,10 @@
 import express from "express";
+import { fetchAllNodes } from "../services/note.service.js";
 
 const router=express.Router();
 
 //fetching all notes from DB
-router.get('/',(req,res)=>{
-    res.send('Hello World!');
-});
+router.get('/',fetchAllNodes);
 
 //create new note & saving it to the database
 router.post('/create',(req,res)=>{
